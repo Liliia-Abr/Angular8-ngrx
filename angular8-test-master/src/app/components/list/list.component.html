@@ -1,0 +1,9 @@
+<div class="list-wrapper">
+    <div class="list-items">
+        <app-list-item
+            *ngFor="let itemInfo of itemsList$ | async"
+            [item]="itemInfo"
+        ></app-list-item>
+    </div>
+</div>
+

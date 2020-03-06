@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>{{data.id ? 'Edit dialog' : 'Create dialog'}}</h3>
+        </mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="form">
+        <mat-form-field class="form-field">
+            <mat-label>Title</mat-label>
+            <input type="text" matInput formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+            <mat-hint>{{form.get('description').value.length}} / 255</mat-hint>
+        </mat-form-field>
+    </form>
+
+    <mat-card-actions>
+        <button
+            mat-raised-button
+            color="primary"
+            [disabled]="form.invalid"
+            (click)="action()"
+        >{{data.id ? 'Save' : 'Create'}}</button>
+        <button mat-raised-button color="warn" (click)="closeDialog()">Cancel</button>
+    </mat-card-actions>
+</mat-card>
